@@ -10,7 +10,7 @@ This allows user to more quickly determine if data has value and should be promo
 ## The Technology Behind Alfred
 Alfred's set of REST services is a Java 7 Spring Boot project. Java 7 was chosen for compatibility with HDFS edge node Java 7 installs.
 The UI is a React project. The ingestion scripts are written in Python 2.7.
-It currently has been tested and operates on Hive, HDFS, and a Unix-based system. It has been tested and operates [on the Cloudera Quickstart VM] (https://www.cloudera.com/downloads/quickstart_vms/5-12.html), but it is not at all Cloudera dependent.
+It currently has been tested and operates on Hive, HDFS, and a Unix-based system. It has been tested and operates [on the Cloudera Quickstart VM](https://www.cloudera.com/downloads/quickstart_vms/5-12.html), but it is not at all Cloudera dependent.
 
 ## Alfred's Data Flow
 There are 3 types of datasets within Alfred: Sandbox, Production and Refined.
