@@ -1,0 +1,15 @@
+[Unit]
+Description=Alfred
+After=syslog.target
+
+[Service]
+User=cloudera
+ExecStart=/home/cloudera/alfred.jar --spring.profiles.active=local
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+
+
+init.d:
+sudo ln -s /home/cloudera/alfred.jar /etc/init.d/alfred

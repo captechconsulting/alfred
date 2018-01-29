@@ -1,0 +1,93 @@
+{
+  "file": {
+    "key": "householdElectricPowerConsumption",
+    "guid": "bb502f3a-90cf-4eb5-8466-0887ec57d131",
+    "securityField": "level 1",
+    "subjectArea": "UCI",
+    "business": {
+      "name": "Household Electric Power Consumption",
+      "description": "Measurements of electric power consumption in one household with a one-minute sampling rate over a period of almost 4 years.",
+      "owner": "Bruce Wayne",
+      "dataSteward": "The Oracle",
+      "velocity": "monthly"
+    },
+    "technical": {
+      "format": "tabular",
+      "tableName": "Household_Electric_Power_Consumption",
+      "compression": "avro",
+      "fileUpdateType": null,
+      "rowFormat": "delimited",
+      "fieldDelimiter": ";",
+      "lineTerminator": "\n",
+      "containsHeaderRow": true
+    }
+  },
+  "fields": [
+    {
+      "name": "date_field",
+      "position": 1,
+      "businessName": "Date",
+      "description": "Date in format dd/mm/yyyy",
+      "datatype": "string",
+      "format": "dd/mm/yyyy",
+      "nullable": "true",
+      "precision": null,
+      "pk": true,
+      "partitionPosition": 2,
+      "quality": {
+        "uniqueness": "The combination of date and time values should not repeat for a given premise in the D_ELECTRIC_PREMISE table",
+        "integrity": "NA",
+        "completeness": "Calculate a ratio of missing fields to total fields",
+        "consistency": "NA",
+        "accuracy": "NA",
+        "validity": "Verify that date is within the expected range"
+      },
+      "formula": null
+    },
+    {
+      "name": "time_field",
+      "position": 2,
+      "businessName": "Time",
+      "description": "Time in format hh:mm:ss",
+      "datatype": "string",
+      "format": "HH:mm:ss",
+      "nullable": "true",
+      "precision": null,
+      "pk": true,
+      "partitionPosition": 1,
+      "quality": {
+        "uniqueness": "Time values can repeat. The combination of date and time values should not repeat for a given premise in the D_ELECTRIC_PREMISE table",
+        "integrity": "NA",
+        "completeness": "Calculate a ratio of missing fields to total fields",
+        "consistency": "NA",
+        "accuracy": "NA",
+        "validity": "Verify that time is within the appropriate range, i.e. 24 hour time frame"
+      },
+      "formula": null
+    },
+    {
+      "name": "globalActivePower",
+      "position": 3,
+      "businessName": "Global Active Power",
+      "description": "Household global minute-averaged active power (in kilowatt)",
+      "datatype": "decimal",
+      "format": null,
+      "nullable": "true",
+      "precision": "8,3",
+      "pk": false,
+      "partitionPosition": null,
+      "quality": {
+        "uniqueness": "NA",
+        "integrity": "NA",
+        "completeness": "Calculate a ratio of missing fields to total fields",
+        "consistency": "Captures the relationship to globalReactivePower with the expectation of an inverse relationship",
+        "accuracy": "NA",
+        "validity": "Acceptable kilowatt ranges, connect to premise field in table D_ELECTRIC_PREMISE for range thresholds  "
+      },
+      "formula": null
+    }
+  ],
+  "version": null,
+  "stage": null,
+  "eid": null
+}
