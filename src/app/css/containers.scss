@@ -1,0 +1,131 @@
+/*
+ * Copyright 2018 CapTech Ventures, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/*
+* Styles for container components
+*/
+
+.header, .main-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.login-container {
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  &__icon {
+    display: flex;
+    span:first-child {
+      margin-right: 10px;
+    }
+  }
+  &__title {
+    line-height: initial;
+  }
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-profile {
+  h3 {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  &__icon {
+    cursor: pointer;
+  }
+  &__title {
+    cursor: pointer;
+    font-weight: bold;
+  }
+}
+
+.user-profile-details {
+  &__title {
+    margin: 10px 0;
+  }
+  &__button-container {
+    text-align: center;
+    margin: 10px 0;
+  }
+}
+
+.placeHolder {
+  min-height: 367px;
+}
+
+.field-list-preview {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 15px;
+    margin: 20px 0;
+    height: 275px;
+    overflow: auto;
+    span {
+      margin-right: 10px;
+    }
+}
+
+.Select-value {
+  width: 85%;
+}
+
+.indicator-box {
+  margin-left: 20px;
+  font-size: 20px;
+   display: flex;
+  align-items: center;
+  &--red {
+    border: 3px solid #f45f42;
+    border-radius: 4px;
+    color: #f45f42;
+  }
+  &--yellow {
+    border: 3px solid #f45f42;
+    border-radius: 4px;
+    color: #f45f42;
+  }
+  &--green {
+    border: 3px solid #41f485;
+    border-radius: 4px;
+    color: #41f485;
+  }
+  &--blue {
+    border: 3px solid #41f485;
+    border-radius: 4px;
+    color: blue;
+  }
+  span {
+    padding: 5px;
+  }
+}
+
+.footer{
+margin-top:30px;
+}
+
+.footer-row {
+  
+}
+

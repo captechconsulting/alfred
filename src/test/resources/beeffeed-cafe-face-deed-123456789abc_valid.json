@@ -1,0 +1,1 @@
+{"guid":"8251775d-6649-48ac-b7e8-bd6cc9fe2f6e","rowCount":123,"path":"/path/to/rawfile","table":"db.hivetable","templateGuid":"12345678-dead-beef-cafe-1234567890ab","timestamp":"2017-04-20 11:56:25.025","stage":"valid","valid":false,"reasons":null,"validQuery":null,"keyMatched":"filenamePattern","filename":"filenamePattern2017-Q1.csv"}

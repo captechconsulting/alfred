@@ -1,0 +1,152 @@
+// =========================================================================
+// Plugin Declaration
+// =========================================================================
+
+plugins {
+    id 'com.moowork.node' version '1.2.0'
+    id 'org.springframework.boot' version '1.5.7.RELEASE'
+}
+
+apply plugin: 'checkstyle'
+apply plugin: 'eclipse'
+apply plugin: 'findbugs'
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'maven'
+apply plugin: 'pmd'
+
+// =========================================================================
+// Project Information
+// =========================================================================
+
+group = 'com.captechconsulting.alfred'
+version = '0.1.0'
+
+description = """"""
+
+// =========================================================================
+// Project Attributes
+// =========================================================================
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7 
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+// =========================================================================
+// Dependency Management
+// =========================================================================
+
+dependencies {
+    // Spring Boot
+     implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
+     implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
+     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+
+    // Spring Data
+     implementation group: 'org.springframework.data', name: 'spring-data-hadoop-boot', version: '2.4.0.RELEASE'
+     implementation group: 'org.springframework.data', name: 'spring-data-hadoop-store', version: '2.4.0.RELEASE'
+
+    // Spring Framework
+     implementation group: 'org.springframework', name: 'spring-jdbc'
+
+    // Spring Security
+     implementation group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.2.RELEASE'
+     implementation group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.2.RELEASE'
+
+    // Webjars
+     implementation group: 'org.webjars', name:'bootstrap', version:'3.3.7-1'
+
+    // Hive
+    implementation(group: 'org.apache.hive', name: 'hive-jdbc', version: '1.1.0') {
+        exclude(group:'org.apache.logging.log4j')
+        exclude(group:'org.slf4j', module:'slf4j-log4j12')
+        exclude(group:'org.eclipse.jetty')
+        exclude(group:'org.eclipse.jetty.aggregate')
+        exclude(group:'org.eclipse.jetty.orbit')
+    }
+
+    // TODO Remove this dependency?
+     implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '2.6.0'
+
+    testImplementation group: 'org.springframework', name: 'spring-test'
+    testImplementation group: 'org.springframework.security', name: 'spring-security-test'
+    testImplementation (group: 'org.springframework.boot', name: 'spring-boot-starter-test') {
+        exclude(module: 'commons-logging')
+    }
+    testImplementation group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc'
+
+    testImplementation group: 'com.jayway.jsonpath', name: 'json-path', version:'2.2.0'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version:'1.10.19'
+}
+
+// =========================================================================
+// Plugin Task Configuration
+// =========================================================================
+
+checkstyle {
+    ignoreFailures = true
+    checkstyleTest.enabled = false
+    configProperties = [ 'checkstyle.header.file': file('config/checkstyle/LICENSE.txt') ]
+    showViolations = false
+    toolVersion = '8.6'
+}
+
+findbugs {
+    effort = 'max'
+    ignoreFailures = true
+    toolVersion = '3.0.1'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
+}
+
+javadoc {
+    failOnError = false
+}
+
+pmd {
+    consoleOutput = false
+    ignoreFailures = true
+    pmdTest.enabled = false
+    ruleSetFiles = rootProject.files('config/pmd/ruleset.xml')
+    toolVersion = '6.0.0'
+}
+
+springBoot {
+    executable = true
+}
+
+wrapper {
+    distributionType = 'all'
+    gradleVersion = '4.5'
+}
+
+// =========================================================================
+// Custom Packaging Tasks
+// =========================================================================
+
+// Javadoc Archive
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts.archives javadocJar
+
+// Source Archive
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+artifacts.archives sourcesJar
+
+//Spring Boot runtimeClassPath
+bootRepackage.customConfiguration = 'runtimeClasspath'
