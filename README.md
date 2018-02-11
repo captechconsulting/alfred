@@ -1,6 +1,11 @@
 # alfred
 Alfred is Your Data Butler!
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://raw.githubusercontent.com/captechconsulting/alfred/master/LICENSE)
+[![Build Status](https://travis-ci.org/captechconsulting/alfred.svg?branch=master)](https://travis-ci.org/captechconsulting/alfred)
+[![Java Vulnerabilities](https://snyk.io/test/github/captechconsulting/alfred/master/badge.svg?targetFile=build.gradle)](https://snyk.io/test/github/captechconsulting/alfred/master?targetFile=build.gradle)
+[![Javascript Vulnerabilities](https://snyk.io/test/github/captechconsulting/alfred/master/badge.svg?targetFile=package.json)](https://snyk.io/test/github/captechconsulting/alfred/master?targetFile=package.json)
+
 Alfred is a custom data ingestion engine that acts as a gatekeeper to prevent ungoverned data from being loaded into a data lake. 
 It allows business users to upload and analyze data themselves. Alfred enables the business user to define and implement files for ingestion. 
 With a simple and intuitive user interface, the customer can provide the file details and submit directly.  
