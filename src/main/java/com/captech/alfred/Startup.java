@@ -102,6 +102,7 @@ public class Startup implements CommandLineRunner {
             Files.createDirectories(Paths.get(textProperties.getFullCurrentRefined()));
             Files.createDirectories(Paths.get(textProperties.getFullCurrentSandbox()));
             Files.createDirectories(Paths.get(textProperties.getFullVersionedSandbox()));
+            Files.createDirectories(Paths.get(textProperties.getLandingZone()));
         }
         if (dataUserConn instanceof TextUsers) {
             Files.createDirectories(Paths.get(userProperties.getTextfullAuthPath()));
