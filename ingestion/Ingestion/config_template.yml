@@ -1,0 +1,40 @@
+local:
+    environment: dev
+    landing_zone: /home/landing_zone
+    registry_URL: http://localhost
+    registry_port: 8765
+    registry_user: appdev
+    registry_PW: python
+   # script_dir: /home/srvc_user_etl_dev/scripts
+    script_driver: /opt/spark-beta/bin/spark-submit
+    script_dir: /home/git/prod
+    script_settings:
+        - conf spark.log.threshold=ERROR 
+        - driver-memory 4G 
+        - executor-memory 32G 
+        - executor-cores 4 
+        - num-executors 8 
+
+hdfs:
+    ingestion_user: srvc_user_etl_dev
+    ingestion_server: <server name>
+    hive_user: none
+    hive_PW: none
+    data_root: data 
+    hive_host: <server name>
+    hive_auth_mechanism: GSSAPI
+    hive_kerberos_service_name: hiveserver
+    hive_settings:
+        - hive.execution.engine=tez
+        - hive.exec.dynamic.partition.mode=nonstrict
+        - hive.exec.max.dynamic.partitions.pernode=2500
+        - hive.exec.max.dynamic.partitions=10000
+        - hive.tez.java.opts=-Xmx8192m
+        - hive.tez.container.size=13312
+        - hive.vectorized.execution.enabled = true;
+        - hive.vectorized.execution.reduce.enabled = true;
+        - mapred.child.java.opts="-XX:+UseConcMarkSweepGC -XX:-UseGCOverheadLimit";
+
+    hive_jars:
+        - /opt/hive-1.2.1/lib/hive-contrib-1.2.1.jar
+
