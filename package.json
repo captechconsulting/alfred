@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack -d --watch",
-    "build": "webpack"
+    "build": "webpack",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -34,9 +36,11 @@
     "react-tabs": "^1.0.0",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
-    "webpack": "^2.5.1"
+    "webpack": "^2.5.1",
+    "snyk": "^1.85.0"
   },
   "devDependencies": {
     "uglifyjs-webpack-plugin": "^0.4.6"
-  }
+  },
+  "snyk": true
 }
