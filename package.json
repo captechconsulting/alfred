@@ -7,7 +7,8 @@
     "dev": "webpack -d --watch",
     "build": "webpack",
     "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "prepare": "npm run snyk-protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",
-    "snyk": "^1.85.0"
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "uglifyjs-webpack-plugin": "^0.4.6"
