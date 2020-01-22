@@ -34,7 +34,7 @@
     "react-modal": "^1.7.7",
     "react-select": "^1.0.0-rc.5",
     "react-tabs": "^1.0.0",
-    "sass-loader": "^6.0.3",
+    "sass-loader": "^7.2.0",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",
     "snyk": "^1.85.0"
