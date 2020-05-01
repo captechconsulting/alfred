@@ -37,7 +37,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",
-    "snyk": "^1.85.0"
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "uglifyjs-webpack-plugin": "^0.4.6"
