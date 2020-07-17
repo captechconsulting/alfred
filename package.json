@@ -36,7 +36,7 @@
     "react-tabs": "^1.0.0",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
-    "webpack": "^2.5.1",
+    "webpack": "^3.11.0",
     "snyk": "^1.85.0"
   },
   "devDependencies": {
