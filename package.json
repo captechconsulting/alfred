@@ -18,11 +18,11 @@
   "dependencies": {
     "axios": "^0.16.1",
     "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^8.2.4",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "bootstrap-sass": "^3.3.7",
-    "css-loader": "^0.28.1",
+    "css-loader": "^4.0.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "flux": "^3.1.2",
     "node-sass": "^4.5.2",
@@ -34,9 +34,9 @@
     "react-modal": "^1.7.7",
     "react-select": "^1.0.0-rc.5",
     "react-tabs": "^1.0.0",
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.17.0",
-    "webpack": "^2.5.1",
+    "sass-loader": "^9.0.0",
+    "style-loader": "^1.1.4",
+    "webpack": "^5.0.0",
     "snyk": "^1.85.0"
   },
   "devDependencies": {
