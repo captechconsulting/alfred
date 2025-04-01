@@ -97,9 +97,7 @@ public abstract class DataStoreService {
         GZIPOutputStream gzos = null;
         try {
             // Validate the key to prevent path traversal
-            if (key != null && (key.contains("..") || key.contains("/") || key.contains("\\"))) {
-                throw new IllegalArgumentException("Invalid key");
-            }
+            validateKey(key);
             // Get the file and save it somewhere
             byte[] bytes = file.getBytes();
             String prepend = "sbx_";
@@ -132,6 +130,12 @@ public abstract class DataStoreService {
             }
         }
 
+    }
+
+    private void validateKey(String key) {
+        if (key != null && (key.contains("..") || key.contains("/") || key.contains("\\"))) {
+            throw new IllegalArgumentException("Invalid key");
+        }
     }
 
     protected boolean matchesPattern(String fileInstance, String template) {

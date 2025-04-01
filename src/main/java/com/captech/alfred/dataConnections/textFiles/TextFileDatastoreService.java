@@ -383,7 +383,11 @@ public class TextFileDatastoreService extends DataStoreService {
             path = Paths.get(textFileProperties.getDraftRefined()).toString();
         }
         logger.debug("Path of file: " + path);
-        File file = new File(Paths.get(path, createKey(refined.getRefinedDataset())).toString());
+        String filename = createKey(refined.getRefinedDataset());
+        if (filename.contains("..") || filename.contains("/") || filename.contains("\\")) {
+            throw new IllegalArgumentException("Invalid filename");
+        }
+        File file = new File(Paths.get(path, filename).toString());
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {
