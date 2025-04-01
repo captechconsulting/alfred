@@ -47,6 +47,18 @@ import java.util.UUID;
 
 @Service
 @EnableConfigurationProperties(TextFileProperties.class)
+
+private void validateGuid(String guid) {
+    if (guid.contains("..") || guid.contains("/") || guid.contains("\\")) {
+        throw new IllegalArgumentException("Invalid guid");
+    }
+}
+
+private void validateKey(String key) {
+        if (key.contains("..")) {
+            throw new IllegalArgumentException("Invalid key");
+        }
+    }
 public class TextFileDatastoreService extends DataStoreService {
 
     private static final Logger logger = LoggerFactory.getLogger(TextFileDatastoreService.class);
@@ -84,6 +96,7 @@ public class TextFileDatastoreService extends DataStoreService {
     }
 
     public Template getMetadata(String key) {
+        validateKey(key);
         Template template = getCurrentMetadata(key);
         if (template != null) {
             return template;
@@ -291,6 +304,7 @@ public class TextFileDatastoreService extends DataStoreService {
     @Override
     public List<InstanceLog> getInstanceLog(final String guid) {
 
+        validateGuid(guid);
         List<InstanceLog> logs = new ArrayList<>();
         FileReader fr = null;
         File dir = new File(Paths.get(textFileProperties.getLogLocation()).toString());
@@ -334,6 +348,7 @@ public class TextFileDatastoreService extends DataStoreService {
 
     @Override
     public Guid writeInstanceLog(InstanceLog log, String guid) {
+        validateGuid(guid);
         UUID guidUUID = UUID.randomUUID();
         if (guid == null) {
             guid = guidUUID.toString();
