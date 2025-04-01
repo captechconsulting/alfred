@@ -53,6 +53,12 @@ private void validateGuid(String guid) {
         throw new IllegalArgumentException("Invalid guid");
     }
 }
+
+private void validateKey(String key) {
+        if (key.contains("..")) {
+            throw new IllegalArgumentException("Invalid key");
+        }
+    }
 public class TextFileDatastoreService extends DataStoreService {
 
     private static final Logger logger = LoggerFactory.getLogger(TextFileDatastoreService.class);
@@ -90,6 +96,7 @@ public class TextFileDatastoreService extends DataStoreService {
     }
 
     public Template getMetadata(String key) {
+        validateKey(key);
         Template template = getCurrentMetadata(key);
         if (template != null) {
             return template;
