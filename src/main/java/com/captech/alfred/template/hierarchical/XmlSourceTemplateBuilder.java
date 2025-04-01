@@ -290,6 +290,7 @@ public class XmlSourceTemplateBuilder implements SourceTemplateBuilder {
         InputStream inputStream = new ByteArrayInputStream(rawXml.getBytes());
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
+        factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
 
         try {
             factory.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
