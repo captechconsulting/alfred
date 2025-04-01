@@ -460,6 +460,9 @@ public class TextFileDatastoreService extends DataStoreService {
 
     @Override
     public String deleteRefined(String filename) {
+        if (filename.contains("..") || filename.contains("/") || filename.contains("\\")) {
+            throw new IllegalArgumentException("Invalid filename");
+        }
         File file = new File(
                 Paths.get(textFileProperties.getCurrentRefined(), findFileName(filename, textFileProperties.getCurrentRefined()))
                         .toString());
