@@ -48,7 +48,12 @@ public class TextUsers extends DataUserStoreService {
 
     @Override
     public void writeNewUser(User user) {
-        File file = new File(Paths.get(properties.getTextfullAuthPath(), generateFilename(user)).toString());
+        String filename = generateFilename(user);
+        // Validate the generated filename
+        if (filename.contains("..") || filename.contains("/") || filename.contains("\\")) {
+            throw new IllegalArgumentException("Invalid filename");
+        }
+        File file = new File(Paths.get(properties.getTextfullAuthPath(), filename).toString());
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {
