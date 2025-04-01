@@ -116,10 +116,13 @@ public class RefinedController {
     @DeleteMapping(value = "{key:.+}")
     @PreAuthorize("hasRole('ADMIN') or hasAnyAuthority('PERM_DELETE')")
     public void deleteRefined(@PathVariable String key) {
+        if (key.contains("..") || key.contains("/") || key.contains("\\")) {
+            throw new IllegalArgumentException("Invalid key");
+        }
         logger.debug("Soft delete metadata called for key " + key);
         String deletedLocation = dataConnection.deleteRefined(key);
         if (deletedLocation == null) {
-            throw new AppInternalError("unale to delete refined dataset");
+            throw new AppInternalError("unable to delete refined dataset");
         }
     }
 

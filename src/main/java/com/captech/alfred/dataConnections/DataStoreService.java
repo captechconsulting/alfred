@@ -96,6 +96,10 @@ public abstract class DataStoreService {
         String landingZone = properties.getLandingZone();
         GZIPOutputStream gzos = null;
         try {
+            // Validate the key to prevent path traversal
+            if (key != null && (key.contains("..") || key.contains("/") || key.contains("\\"))) {
+                throw new IllegalArgumentException("Invalid key");
+            }
             // Get the file and save it somewhere
             byte[] bytes = file.getBytes();
             String prepend = "sbx_";
